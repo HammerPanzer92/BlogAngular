@@ -1,0 +1,18 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        <h5 class="card-title"><a routerLink="/post/{{index}}">{{post[0]}}</a></h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{post[1] | date:"d/MM/YYYY" }}</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <p class="card-text" [innerHTML]="post[2]"></p>
+        </li>
+        <li class="list-group-item" [ngClass]="{'bg-warning': post[3] == 0, 'bg-success': post[3]>0,'bg-danger': post[3]<0}">
+            <p class="card-text">Like : {{post[3]}}</p>
+        </li>
+    </ul>
+    <div class="card-footer">        
+        <button class="btn btn-danger ripple-surface" (click)="dislike()" style="margin: 15px;" >Dislike</button>
+        <button class="btn btn-success ripple-surface" (click)="like()">Like</button>
+    </div>
+</div>

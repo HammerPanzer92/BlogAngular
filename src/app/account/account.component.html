@@ -1,0 +1,43 @@
+<div class="form-widget">
+  <!--Note : session.user contient juste les infos d'authenfication, le reste est stocké dans profil-->
+    <div>
+      <label for="email">Email</label>
+      <!--Input du mail de l'utilisateur (désactivé pour éviter les modifs)-->
+      <input id="email" type="text" [value]="session?.user?.email" disabled/>
+    </div>
+    <div>
+      <label for="username">Name</label>
+      <!--Input du nom utilisateur (si présent)-->
+      <input
+        #username
+        id="username"
+        type="text"
+        [value]="profile?.username ?? ''"
+      />
+    </div>
+    <div>
+      <label for="website">Website</label>
+      <input
+        #website
+        id="website"
+        type="url"
+        [value]="profile?.website ?? ''"
+      />
+    </div>
+
+    <div>
+      <button
+        class="button block primary"
+        (click)="updateProfile(username.value, website.value)"
+        [disabled]="loading"
+      >
+        {{loading ? 'Loading ...' : 'Update'}}
+      </button>
+    </div>
+
+    <div>
+      <button class="button block" (click)="signOut()">
+        Sign Out
+      </button>
+    </div>
+  </div>

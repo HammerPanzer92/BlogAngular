@@ -1,0 +1,42 @@
+<!--Création du form via formGroup/formBuilder et la fonction a appelé lorsqu'on submit le form
+<form [formGroup]="postForm" (ngSubmit)="ajout()">
+    <div class="mb-3">
+        <label for="titre" class="form-label">Titre :</label>
+        <!--On précise le nom du formControl via formControlName
+        <input id="name" type="text" formControlName="titre">
+    </div>
+    <div class="mb-3">
+        <label for="contenu" class="form-label">Contenu :</label>
+        <textarea id="contenu" class="form-control" formControlName="contenu"></textarea>
+    </div>
+    <h3>Test formGroup dans un autre</h3>
+    <div class="mb-3" formGroupName="testGroup">
+        <label for="unChamp" class="form-label">Un champ</label>
+        <input id="unChamp" type="text" formControlName="unChamp">
+
+        <label for="autreChamp" class="form-label">Autre champ</label>
+        <input id="autreChamp" type="text" formControlName="autreChamp">
+    </div>
+    <!--On rajoute le [disabled] afin de désactiver le bouton tant que le formulaire est pas validé
+    (cf les validators dans le TS)
+    <button type="submit" [disabled]="!postForm.valid" class="btn btn-primary">Enregistrer</button>
+</form>
+-->
+<div *ngIf="enregistre" class="alert alert-success alert-dismissible fade show" role="alert">
+    Post enregistrer !
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeAlert()"></button>
+  </div>
+<!--Création d'un form en utilisant ngModel-->
+<h5>Ajout d'un post</h5>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="mb-3">
+        <label for="titre" class="form-label">Titre :</label>
+        <input name="titre" type="text" class="form-control" ngModel required>
+    </div>
+    <div class="mb-3">
+        <label for="contenu" class="form-label">Contenu :</label>
+        <textarea name="contenu" class="form-control" ngModel required></textarea>
+    </div>
+    <button [disabled]="!f.valid" class="btn"
+        [ngClass]="{'btn-success': f.valid,'btn-danger': !f.valid}">Submit</button>
+</form>

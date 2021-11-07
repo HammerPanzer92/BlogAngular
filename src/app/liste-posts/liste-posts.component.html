@@ -1,0 +1,6 @@
+<div class="container">
+    <!--On créé X component Post en spécifiant le post en option-->
+    <div class="row row-cols-2 row-cols-md-2 g-4">
+        <div class="col" *ngFor="let post of tabPost, let index=index"><app-post [unPost]="post" [index]="index"></app-post></div>
+    </div>
+</div>

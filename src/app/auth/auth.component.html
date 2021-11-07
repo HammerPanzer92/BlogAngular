@@ -1,0 +1,30 @@
+<div class="row flex flex-center">
+    <form class="col-6 form-widget">
+      <h1>Login !</h1>
+      <p>Connecte-toi ouech</p>
+      <div>
+        <input
+          #input
+          class="inputField"
+          type="email"
+          placeholder="votre mail"
+        />
+        <input
+          #mdp
+          class="inputField"
+          type="Mdp"
+          placeholder="mot de passe"
+        />
+      </div>
+      <div>
+        <button
+          type="submit"
+          (click)="handleLogin(input.value, mdp.value)"
+        class="button block"
+        [disabled]="loading"
+        >
+        {{loading ? 'Loading' : 'Send magic link'}}
+        </button>
+      </div>
+    </form>
+  </div>
